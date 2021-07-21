@@ -26,10 +26,16 @@ function Quiz(props) {
     const [quizProgress, setQuizProgress] = useState(0) //progress bar
     const [quizComplete, setQuizComplete] = useState("") //quiz complete notification
 	  const [questionResult, setQuestionResult] = useState("")//quiz result notification
-
-  function isCorrect(e) {
-    console.log(e.target.dataset.id)
-    if (e.target.dataset.id === props.question.correct_choice_id) {
+    
+  const isCorrect = (e) => {
+    e.persist();
+    console.log(props.question.correctChoice_id)
+    console.log(e.target.dataset.id);
+    // let choiceId = e.target.dataset.id;
+    // console.log(choiceId, props.question.choice1_id, props.question.choice2_id);
+    
+    
+    if (e.target.dataset.id === props.question.correctChoice_id) {
       console.log("correct")
       setQuestionResult("Correct")
     } else {
@@ -45,7 +51,7 @@ function Quiz(props) {
 		} else {
 			setQuizProgress(quizProgress + percentage)
 			//alert("you have reached the end of the quiz!") 
-			setQuizComplete("Quiz Complete!") // replaced the alert with this!
+			setQuizComplete("Quiz Complete!") 
 		}	
   }    
 
@@ -55,8 +61,8 @@ function Quiz(props) {
         {/* <h3>Select the Correct Answer</h3> */}
        
         {props.question &&<div className="answer-selection">         
-            <StyledButton data-id={props.question.choice1_id} onClick={isCorrect}>{props.question.choices[0].japanese_label} </StyledButton>
-            <StyledButton data-id={props.question.choice2_id} onClick={isCorrect}>{props.question.choices[1].japanese_label} </StyledButton>
+            <StyledButton data-id={props.question.choice1_id} onClick={(e) => isCorrect(e)}>{props.question.choices[0].japanese_label} </StyledButton>
+            <StyledButton data-id={props.question.choice2_id} onClick={(e) => isCorrect(e)}>{props.question.choices[1].japanese_label} </StyledButton>
         </div>}
 
         <div className="prog-bar">
