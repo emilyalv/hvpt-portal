@@ -19,7 +19,11 @@ h5 {
     font-family: 'Montserrat', sans-serif;
 }
 
-/* why won't this center hahaha */
-/* .prog-bar {
-
+/* #quizComplete {
+    background-color: white;
+    border: black;
+    border-style: solid;
+    border-radius: 20px;
+    width: 50%;
+    margin: auto;
 } */

@@ -1,8 +1,9 @@
 .play-audio {
-    display: flex;
-    justify-content: space-around;
-    margin: auto;
+    /* display: flex; */
+    /* justify-content: center; doesnt work? */
+    /* background-color: #FFC600; doesn't work */
     width: 50%;
+    margin: auto;
     padding: 10px;
     font-family: 'Montserrat', sans-serif;
 }

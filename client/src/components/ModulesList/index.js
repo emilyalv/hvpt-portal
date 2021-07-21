@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from "react";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
+// import Table from "@material-ui/core/Table";
+// import TableBody from "@material-ui/core/TableBody";
+// import TableCell from "@material-ui/core/TableCell";
+// import TableContainer from "@material-ui/core/TableContainer";
+// import TableHead from "@material-ui/core/TableHead";
+// import TableRow from "@material-ui/core/TableRow";
+// import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { Button } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import "./style.css";
-
 
 // const useStyles = makeStyles({
 //   table: {
@@ -28,7 +29,11 @@ import "./style.css";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-
+  },
+  typography: {
+    subtitle1: {
+      fontSize: 300,
+    },
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -60,12 +65,12 @@ export default function ModuleList() {
   };
 
   return (
-
     <div>
       {modules.map((item) => {
         return (
           <Accordion>
             <AccordionSummary
+              className="moduleName"
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
               id="panel1a-header"
@@ -74,28 +79,33 @@ export default function ModuleList() {
                 <span>{item.module_name}</span>
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
-              {item.activities.length > 0 &&
-                item.activities.map((act) => {
-                  return (
+
+            {item.activities.length > 0 &&
+              item.activities.map((act) => {
+                return (
+                  <AccordionDetails>
                     <React.Fragment key={act.id}>
-                      <Typography variant="h6">{act.activity_name}</Typography>{" "}
-                      <br />
-                      <Typography variant="h6">
-                        {act.activity_type}
+                      <Typography variant="subtitle1">
+                        {act.activity_type} {act.activity_name}
                       </Typography>{" "}
-                      <br />
-                      <Typography variant="h6">{act.due_date}</Typography>{" "}
-                      <br />
-                      <Typography variant="h6">{act.status}</Typography> <br />
+                      <Link to={"/activity"}>
+                        <Button
+                          className="spacing"
+                          size="small"
+                          variant="contained"
+                          color="primary"
+                          href="#activity"
+                        >
+                          Start
+                        </Button>
+                      </Link>
                     </React.Fragment>
-                  );
-                })}
-            </AccordionDetails>
+                  </AccordionDetails>
+                );
+              })}
           </Accordion>
         );
       })}
     </div>
-
   );
 }

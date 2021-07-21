@@ -44,14 +44,15 @@ function Quiz(props) {
     }
     props.setCurrentQuestion(props.currentQuestion + 1);
     const nextQuestion = props.currentQuestion + 1;
-		const percentage = 100 / props.questions.length;
+		const percentage = Math.round(100 / props.questions.length);//causing issues because 100/6 is not an integer lol....
 		if (nextQuestion < props.questions.length) {
 			props.setCurrentQuestion(nextQuestion);
 			setQuizProgress(quizProgress + percentage)
 		} else {
 			setQuizProgress(quizProgress + percentage)
-			//alert("you have reached the end of the quiz!") 
-			setQuizComplete("Quiz Complete!") 
+
+      setQuizComplete("Quiz Complete!")
+      setQuestionResult("")
 		}	
   }    
 
@@ -70,9 +71,10 @@ function Quiz(props) {
             completed={quizProgress}
             width="97%"
             bgColor="#FFC600"
-			margin="20px"
+			      margin="20px"
           />
-          <h3>{quizComplete}</h3>
+          {/* can we attach an id here so that the styling is only visible when the state is? */}
+          <h3>{quizComplete}</h3> 
           <h3>{questionResult}</h3>
         </div>
       </>

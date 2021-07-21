@@ -1,9 +1,17 @@
 #table {
-    border-radius: 25px;
-    
+  border-radius: 25px;
 }
 
 .row {
-    height: 80px;
+  height: 80px;
 }
 
+.spacing {
+  margin-left: 2vw !important;
+}
+
+.moduleName {
+  font-size: x-large !important;
+  font-weight: bolder !important;
+  background-color: rgb(233, 233, 233) !important;
+}
