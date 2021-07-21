@@ -25,12 +25,13 @@ class Navbar extends React.Component {
             to="/login">
             Login 
           </NavLink>
-          <NavLink
+          {/* for future use */}
+          {/* <NavLink
             className="navLink"
             activeStyle={{ fontWeight: "bold" }}
             to="/module">
             Module 
-          </NavLink>
+          </NavLink> */}
           <NavLink
             className="navLink"
             activeStyle={{ fontWeight: "bold" }}
