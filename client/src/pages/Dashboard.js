@@ -1,25 +1,24 @@
 import React from "react";
-import { Container } from "@material-ui/core";
+// import { Container } from "@material-ui/core";
+import Container from "react-bootstrap/Container";
 import ModuleList from "../components/ModulesList";
 
 //Get The Modules for this user; Pass the Modules to the ModuleTable component
 
 const Dashboard = () => {
   return (
-    <Container fluid>
-
+    <Container>
       <h1
         style={{
           color: "#072AC8",
           paddingTop: "35px",
           paddingBottom: "35px",
-          fontFamily: "Playfair Display",
+          fontFamily: "Open Sans",
         }}
       >
         My Learning Dashboard
       </h1>
       <ModuleList />
-
     </Container>
   );
 };

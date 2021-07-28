@@ -5,9 +5,9 @@ const { User, Course } = require("../../models");
 // ******
 // Begin added code for login/logout
 
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   try {
-    console.log(req.body)
+    console.log(req.body);
     const userData = await User.create(req.body);
 
     req.session.save(() => {
@@ -17,20 +17,22 @@ router.post('/', async (req, res) => {
       res.status(200).json(userData);
     });
   } catch (err) {
-    console.log(err)
+    console.log(err);
     res.status(400).json(err);
   }
 });
 
-router.post('/login', async (req, res) => {
-  console.log(req.body)
+router.post("/login", async (req, res) => {
+  console.log(req.body);
   try {
-    const userData = await User.findOne({ where: { username: req.body.data.username } });
+    const userData = await User.findOne({
+      where: { username: req.body.data.username },
+    });
 
     if (!userData) {
       res
         .status(400)
-        .json({ message: 'Incorrect username or password, please try again' });
+        .json({ message: "Incorrect username or password, please try again" });
       return;
     }
 
@@ -39,24 +41,23 @@ router.post('/login', async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'Incorrect username or password, please try again' });
+        .json({ message: "Incorrect username or password, please try again" });
       return;
     }
 
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      
-      res.json({ user: userData, message: 'You are now logged in!' });
-    });
 
+      res.json({ user: userData, message: "You are now logged in!" });
+    });
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-router.post('/logout', (req, res) => {
-  console.log(req,"here")
+router.post("/logout", (req, res) => {
+  console.log(req, "here");
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
@@ -65,7 +66,6 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
-
 
 router.get("/", async (req, res) => {
   try {

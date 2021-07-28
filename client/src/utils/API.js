@@ -13,10 +13,12 @@ export default {
   getChoices: function (id) {
     return axios.get("api/questions/" + id);
   },
+
   getActivities: function (id) {
     return axios.get("/api/activities/" + id);
   },
+
   login: function (username, password) {
-    return axios.post("api/users/login", {data: {username, password}})
-  }
+    return axios.post("api/users/login", { data: { username, password } });
+  },
 };
