@@ -43,3 +43,5 @@ Packages include:
 ## Link
 - Deployed via Heroku: https://murmuring-lake-20649.herokuapp.com/activity
 - Trello: https://trello.com/b/G2lKNSCl/hvpt-app 
+
+## LO First Push Test
