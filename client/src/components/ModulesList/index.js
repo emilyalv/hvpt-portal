@@ -1,11 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import Table from "@material-ui/core/Table";
-// import TableBody from "@material-ui/core/TableBody";
-// import TableCell from "@material-ui/core/TableCell";
-// import TableContainer from "@material-ui/core/TableContainer";
-// import TableHead from "@material-ui/core/TableHead";
-// import TableRow from "@material-ui/core/TableRow";
-// import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
@@ -16,15 +9,6 @@ import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import "./style.css";
-
-// const useStyles = makeStyles({
-//   table: {
-//     minWidth: 650,
-//     // cannot get this to work
-//     fontFamily: "Montserrat",
-//     color: "red",
-//   },
-// });
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -76,7 +60,7 @@ export default function ModuleList() {
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <Typography className={classes.heading} >
+              <Typography className={classes.heading}>
                 <span>{item.module_name}</span>
               </Typography>
             </AccordionSummary>
